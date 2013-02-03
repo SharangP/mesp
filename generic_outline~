@@ -1,0 +1,18 @@
+Schedule: [5 7 4 ...] %Exam for Class 1 takes place at Time slot 5, Exam for Class 2 takes place at Time slot 7 ,etc.
+Students: [1 0 1 ... ],[0 1 0 ...] ... %Student 1 has Classes 1 & 3, Student 2 has Class 2... etc.
+metric = Schedule .* Student(i) %vector for what the student's final schedule will be.. i.e. what time slots they will need.
+metric = metric %remove non-zero elements i.e. metric(find(metric)) or metric(metric~=0) in matlab
+Fitness(metric) %Function that assigns weights & outputs a numerical value based on how good that student's final schedule is
+
+Initialize some of population randomly, some with what we already think is good (i.e. keeping 3 hour time slots)
+
+cull X%.. %paper says stochastically choose P/2.. %triangular distribution would probably be simpliest to work with, else pseudogaussian that gets cut off
+
+simple mating (choose pivots (like quicksort maybe? optimal pivot)) %paper uses .5 to 1 Pr
+more complicated mating (every element has some probability of exchange with a peer)
+
+mutation (choose maybe like X% of the schedule elements and just randomize them) (paper uses 0 to .05)
+
+rinse & repeat? pray for convergence
+
+to simplify computation, perhaps only a segment of the known student vectors will have their metric tested. (randomly choose like X%), since this is the computationaly intensive step.
