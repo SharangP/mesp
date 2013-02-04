@@ -45,7 +45,10 @@ for q = 1:num_runs
     avg(q) = mean(pop_fit);
     
     %Culling
-    p = [100:-1:1]; p = p/sum(p); %generic prob vector, currently triangular
+    p = [100:-1:1]; 
+    p(1) = 5000;
+    p(2) = 5000;
+    p = p/sum(p); %generic prob vector, currently triangular
     count = randsample(100,50,true,p);
     saved = pop_ffit(count,2);
     saved_population = population(saved);
