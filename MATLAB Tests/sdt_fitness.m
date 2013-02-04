@@ -13,7 +13,7 @@ possibilities = [1 1 0; 0 1 1; 1 1 1; 1 0 1]';
 met_2 = [0 0 0]';
 for j = 1:5
     check = 0;
-    for i = 1:4
+    parfor i = 1:4
         check = check + i*isequal(s_mod(:,j),possibilities(:,i));
     end
         switch check

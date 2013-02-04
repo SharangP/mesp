@@ -1,3 +1,5 @@
+%Basic Test Generation
+
 class_list = 1:100; %give or take from last semester's final sch
 
 sdt_vec = zeros(400,5);
