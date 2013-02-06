@@ -4,15 +4,15 @@ close all;
 test_generate %generate simplified test data
 initializer
 
-%Generational fitness track 
-num_runs = 10000;
+%Generational fitness track
+num_runs = 100;
 avg = zeros(num_runs,1);
 gen_min = zeros(num_runs,1);
 for q = 1:num_runs
     
     %Fitness Testing
     pop_fit = zeros(100,1);
-   parfor h = 1:size(population,1)
+    parfor h = 1:size(population,1)
         
         sdt_sch = zeros(num_student,num_timeslot);
         for i = 1:size(sdt_vec,1)
@@ -20,17 +20,19 @@ for q = 1:num_runs
             sdt_sch(i,:) = sum(bool,2)';
         end %output schedule for each student in a row vector
         
-%         prof_sch = zeros(num_prof,num_timeslot);
-%         for i = 1:size(prof_vec,1)
-%             bool = ismember(population{h},prof_vec);
-%             prof_sch(i,:) = sum(bool,2)';
-%         end %output schedule for each prof in a row
-
+        %         prof_sch = zeros(num_prof,num_timeslot);
+        %         for i = 1:size(prof_vec,1)
+        %             bool = ismember(population{h},prof_vec);
+        %             prof_sch(i,:) = sum(bool,2)';
+        %         end %output schedule for each prof in a row
+        
         f_num_sdt = zeros(num_student,1);
         for i = 1:size(sdt_vec,1)
             f_num_sdt(i) = sdt_fitness(sdt_sch(i,:));
         end %fitness for each student
-        
+        %Breeding
+    order_save = randperm(50,50);
+    new_pop = cell(50,1);    
         %     f_num_sdt = zeros(num_prof,1)
         %     for i = 1:size(prof_vec,1)
         %         f_num_prof(i) = prof_fitness(sdt_sch(i,:));
@@ -45,8 +47,9 @@ for q = 1:num_runs
     avg(q) = mean(pop_fit);
     
     %Culling
-    p = [100:-1:1]; 
-    p
+    p = [100:-1:1];
+    p(1) = 5000;
+    p(2) = 5000;
     p = p/sum(p); %generic prob vector, currently triangular
     count = randsample(100,50,true,p);
     saved = pop_ffit(count,2);

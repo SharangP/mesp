@@ -2,19 +2,15 @@ function [c1, c2] = xbreed(p1, p2)
 %crossbreed w/check
 rand_vec = randi(100,1,numel(p1))>=50;
 short = find(rand_vec); %non-zero
-c1 = zeros(1,numel(rand_vec));
+c1 = zeros(1,numel(rand_vec)); %allocate & unwrap for easy indexing
 p1 = reshape(p1,1,length(c1));
 p2 = reshape(p2,1,length(c1));
  
-
-
 j =1;
-p1(~p1) = -82:-1;
+p1(~p1) = -82:-1; %don't delete this, its good
 p2(~p2) = -82:-1;
 c1 = p1.*~rand_vec;
 for i = short
-%         disp (i)
-%         disp (j)
         conflict = any(ismember(c1,p2(j)));
         while conflict&&p2(j)~=0
             j=j+1;

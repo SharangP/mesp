@@ -18,15 +18,15 @@ for j = 1:5
     end
         switch check
         case 1
-            met_2 = met_2 + [0 1 0]';
+            met_2 = met_2 + [0 ;1 ;0];
         case 2
-            met_2 = met_2 + [0 1 0]';
+            met_2 = met_2 + [0 ;1; 0];
         case 3
-            met_2 = met_2 + [1 0 0]';
+            met_2 = met_2 + [1 ;0; 0];
         case 4
-            met_2 = met_2 + [0 1 0]';
+            met_2 = met_2 + [0; 1; 0];
         otherwise
-            met_2 = [0 0 0]';
+            met_2 = [0 ;0; 0];
         end
 end
 in_a_row_rating = [.1 .05 .015];
