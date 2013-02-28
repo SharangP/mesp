@@ -12,3 +12,5 @@ for i = short
     j=j+1;
 end
 c1 = (c1>0).*c1;
+
+%can be vectorized later.... ... use find func.. want 
