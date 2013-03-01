@@ -1,10 +1,12 @@
 #!/bin/sh
 
 # parse the final schedule and print a dictionary in the format:
-# [class_name,exam_slot]
+# [exam_id,exam_slot,room,class_name]
 
 gawk '
 BEGIN {
+
+exam_id = 0
 
 # define dictionary of exam slots
     slots["5/9","10-1"] = 1
@@ -36,10 +38,11 @@ BEGIN {
     slots["5/9","10-12"] = 1
     slots["5/9","6-8"] = 3
 }
+
 {
-    if($4){
-        # put special cases here
-        print $2,slots[$4,$5],$6
+    if(NR !=1 && $4){
+        if(!exam[slots[$4,$5],$6]) exam[slots[$4,$5],$6] = ++exam_id
+        print exam[slots[$4,$5],$6],slots[$4,$5],$6,$2
         }
 }
 ' good_final_schedule.txt
