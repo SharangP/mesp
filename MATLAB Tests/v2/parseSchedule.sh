@@ -38,6 +38,9 @@ exam_id = 0
     slots["5/9","10-12"] = 1
     slots["5/9","6-8"] = 3
 
+# another gay class
+    slots["5/13","3-6"] = 8
+
     print "exam_id exam_slot room class_name"
 }
 
