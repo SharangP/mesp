@@ -1,3 +1,4 @@
+exam_id exam_slot room class_name
 1 10 427 ESC130.1
 2 7 427 CHE430
 3 2 427 CHE447

@@ -37,6 +37,8 @@ exam_id = 0
     slots["5/15","6-8"] = 15
     slots["5/9","10-12"] = 1
     slots["5/9","6-8"] = 3
+
+    print "exam_id exam_slot room class_name"
 }
 
 {
