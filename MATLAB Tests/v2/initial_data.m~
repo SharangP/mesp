@@ -1,0 +1,15 @@
+load initial_import.mat
+
+%Initialize data into a nice format
+%Students separated row-wise
+
+emptyCells = cellfun('isempty', initial_student_simp);
+initial_student_simp(all(emptyCells,2),:) = []; %remove students w/o exams
+
+for i = 1:size(id_to_class,1)
+    
+end
+
+
+
+

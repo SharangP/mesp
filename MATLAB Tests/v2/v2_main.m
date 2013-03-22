@@ -1,16 +1,22 @@
 clear all;
 clc;
 close all;
-v2_test_generate
+% v2_test_generate
 
-num_runs = 1000;
+initial_data;
+
+sdt_vec = std_array;
+room_vec = 1:13;
+
+num_runs = 100;
 avg = zeros(num_runs,1);
 gen_min = zeros(num_runs,1);
+
 
 for q = 1:num_runs
     %Initial checks
     num_student = size(sdt_vec,1);
-    num_prof = size(prof_vec,1);
+%     num_prof = size(prof_vec,1);
     num_timeslot = size(population{1},1);
     num_room = length(room_vec);
     pop_fit = zeros(100,1);
@@ -22,7 +28,7 @@ for q = 1:num_runs
         conflict_rating = [0 1:0.5:4];
         collision_rating = [.1 .03 .015];
         for i = 1:num_student
-            sdt_timeloc = population{h}(sdt_vec(i,:));
+            sdt_timeloc = population{h}(sdt_vec(i,find(sdt_vec(i,:))));
             fitness(i) = v2_sdt_fitness(sdt_timeloc,conflict_rating,collision_rating);
         end
         pop_fit(h) = sum(fitness);

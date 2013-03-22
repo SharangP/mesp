@@ -3,9 +3,12 @@ clc;
 close all;
 % v2_test_generate
 
-num_runs = 1000;
+initial_data;
+
+num_runs = 10;
 avg = zeros(num_runs,1);
 gen_min = zeros(num_runs,1);
+
 
 for q = 1:num_runs
     %Initial checks
