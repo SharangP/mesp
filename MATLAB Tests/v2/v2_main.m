@@ -16,10 +16,11 @@ gen_min = zeros(num_runs,1);
 for q = 1:num_runs
     %Initial checks
     num_student = size(sdt_vec,1);
-%     num_prof = size(prof_vec,1);
+    %     num_prof = size(prof_vec,1);
     num_timeslot = size(population{1},1);
     num_room = length(room_vec);
     pop_fit = zeros(100,1);
+    
     
     %Fitness Testing
     parfor h = 1:size(population,1)
@@ -34,6 +35,14 @@ for q = 1:num_runs
         pop_fit(h) = sum(fitness);
     end
     
+    %plot & save
+    avg(q) = mean(pop_fit);
+    plot(avg(1:q)); %plot
+    hold all
+    [gen_min(q) best_loc]= min(pop_fit);
+    current_best = population{best_loc};
+    plot(gen_min(1:q));
+    drawnow
     
     pop_list = [1:100]';
     pop_ffit = [pop_fit pop_list];
@@ -66,10 +75,7 @@ for q = 1:num_runs
         population{i} = mutate(population{i},rate);
     end
     
-    avg(q) = mean(pop_fit);
-    plot(avg(1:q)); %plot
-    hold all
-    gen_min(q) = min(pop_fit);
-    plot(gen_min(1:q));
-    drawnow
+    
 end
+
+
