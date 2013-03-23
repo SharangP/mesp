@@ -39,6 +39,8 @@
 %%
 
 load good_import.mat
+room_data;
+
 num_classes = size(id_to_class,1);
 std_array = zeros(size(initial_student_simp));
 class_size = zeros(num_classes,1);
@@ -50,10 +52,10 @@ for i = 1:num_classes
     std_array = std_array + i*bin;
 end
 
-population = cell(100,1);
+%%
+% population = cell(100,1);
+% for i = 1:100
+%     population{i} = randperm(182,numel(id_to_class));
+% end
 
-for i = 1:100
-    population{i} = randperm(182,numel(id_to_class));
-end
-
-id_to_class(find(class_size==0))
+% id_to_class(find(class_size==0))

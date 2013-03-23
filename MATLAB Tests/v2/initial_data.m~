@@ -39,6 +39,8 @@
 %%
 
 load good_import.mat
+room_data;
+
 num_classes = size(id_to_class,1);
 std_array = zeros(size(initial_student_simp));
 class_size = zeros(num_classes,1);

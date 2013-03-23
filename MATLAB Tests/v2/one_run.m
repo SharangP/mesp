@@ -1,14 +1,14 @@
+function [current_best] = one_run(num_runs,sdt_vec,population,class_size,room_capacity)
+%only for the random seeding.. too lazy to move all my stuff around
 % v2_test_generate
 
-initial_data;
-
-sdt_vec = std_array;
+% sdt_vec = std_array;
 room_vec = 1:13;
 
-num_runs = 10;
+% num_runs = 10;
 avg = zeros(num_runs,1);
 gen_min = zeros(num_runs,1);
-
+top = zeros(num_runs,1);
 
 for q = 1:num_runs
     %Initial checks
@@ -36,10 +36,10 @@ for q = 1:num_runs
     
     %plot & save
     avg(q) = mean(pop_fit);
-    [top(q) test] = max(pop_fit);
+    [top(q), test] = max(pop_fit);
     plot(avg(1:q)); %plot
     hold all
-    [gen_min(q) best_loc]= min(pop_fit);
+    [gen_min(q), best_loc]= min(pop_fit);
     current_best = population{best_loc};
     plot(gen_min(1:q));
     plot(top(1:q));
@@ -73,11 +73,12 @@ for q = 1:num_runs
     
     %Mutation
     rate = 1; %#swap mutation per
-    parfor i = 1:100
+    for i = 1:100
         population{i} = mutate(population{i},rate);
     end
     
     
 end
 
+end
 

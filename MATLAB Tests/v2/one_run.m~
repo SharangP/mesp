@@ -1,11 +1,12 @@
+function [current_best] = one_run(num_runs)
+%only for the random seeding.. too lazy to move all my stuff around
 % v2_test_generate
 
-initial_data;
 
 sdt_vec = std_array;
 room_vec = 1:13;
 
-num_runs = 10;
+% num_runs = 10;
 avg = zeros(num_runs,1);
 gen_min = zeros(num_runs,1);
 
@@ -20,7 +21,7 @@ for q = 1:num_runs
     
     
     %Fitness Testing
-    parfor h = 1:size(population,1)
+    for h = 1:size(population,1)
         
         fitness = zeros(1,num_student);
         conflict_rating = [0 1:0.5:4];
@@ -73,11 +74,12 @@ for q = 1:num_runs
     
     %Mutation
     rate = 1; %#swap mutation per
-    parfor i = 1:100
+    for i = 1:100
         population{i} = mutate(population{i},rate);
     end
     
     
 end
 
+end
 
