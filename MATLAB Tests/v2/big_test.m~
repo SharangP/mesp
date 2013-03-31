@@ -1,9 +1,0 @@
-total_independent_runs = 2;
-
-collection_best = cell(total_independent_runs,1);
-num_internal_runs =10;
-for ii = 1:total_independent_runs
-    initial_data;
-    collection_best{ii} = one_run(num_internal_runs);
-end
-

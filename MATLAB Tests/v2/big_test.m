@@ -10,3 +10,22 @@ for ii = 1:total_independent_runs
     close all;
 end
 
+%%
+room_data
+initial_data
+base = cell(13,14,100); %hardcode
+% base = repmat(room_list,1,14);
+% base = repmat(base,[1,1,numel(collection_best)]);
+
+id_to_class = id_to_class'; %huh, just for easier reading
+
+for ii = 1:numel(collection_best)
+    row_index = mod(collection_best{ii},inter);
+    row_index(find(row_index==0))= inter;
+    col_index = ceil(collection_best{ii}./inter);
+    for jj = 1:numel(id_to_class)
+        [base{row_index(jj),col_index(jj),ii}] = id_to_class{jj};
+    end
+    
+end
+
