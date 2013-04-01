@@ -5,7 +5,7 @@ initial_data;
 sdt_vec = std_array;
 room_vec = 1:13;
 
-num_runs = 10;
+num_runs = 1000;
 avg = zeros(num_runs,1);
 gen_min = zeros(num_runs,1);
 
@@ -31,7 +31,8 @@ for q = 1:num_runs
                 collision_rating);
         end
         pop_fit(h) = sum(fitness)+ ...
-            room_check(class_size,room_capacity,population{h});
+            room_check(class_size,room_capacity,population{h}) + ... 
+            adj_compare(population{h});
     end
     
     %plot & save

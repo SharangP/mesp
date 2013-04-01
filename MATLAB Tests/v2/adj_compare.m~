@@ -1,0 +1,10 @@
+%hardcode adjuncts??? huh
+function [num] = adj_compare(sch)
+
+load class_adj.mat;
+sch = mod(sch,13);
+sch(sch==0) = 13;
+sch = sch';
+
+number = numel(class_adj2);
+end

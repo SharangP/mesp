@@ -31,7 +31,8 @@ for q = 1:num_runs
                 collision_rating);
         end
         pop_fit(h) = sum(fitness)+ ...
-            room_check(class_size,room_capacity,population{h});
+            room_check(class_size,room_capacity,population{h}) + ... 
+            adj_compare(population{h});
     end
     
     %plot & save
