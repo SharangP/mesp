@@ -5,8 +5,8 @@ room = 13; %# of rooms
 perday = 3; %# of slots/day
 
 ds = zeros(2,length(s));
-ds(1,:) = ceil(s/time); %decomposed schedule, hardcored for now %, time
-ds(2,:) = mod(s,room)+1; %location
+ds(1,:) = ceil(s/room); %decomposed schedule, hardcored for now %, time
+ds(2,:) = mod(s,room)+1; %location , not used/also entirely correct
 sch = histc(ds(1,:),1:time);
 conflict = sch(sch >=1);
 metric_1 = sum(conr(conflict(:))); %first metric, measure for conflict
@@ -14,23 +14,23 @@ metric_1 = sum(conr(conflict(:))); %first metric, measure for conflict
 sch_mod = [sch 0];
 sch_mod = sch_mod >0;
 day = sum(reshape(sch_mod,3,5),1);
-
+day_1 = zeros(5,1);
 for j = 1:5
     switch day(j)
         case 3
-            day(j) = colr(1);
+            day_1(j) = colr(1);
         case 2
-            if isequal(sch(perday*j -2: perday*j),[1 0 1]) %hardcored case
-                day(j) = colr(3);
+            if isequal(sch_mod(perday*j -2: perday*j),[1 0 1]) %hardcoded case
+                day_1(j) = colr(3);
             else
-                day(j) = colr(2);
+                day_1(j) = colr(2);
             end
         otherwise
-            day(j) = 0;
+            day_1(j) = 0;
     end
 end
 
-metric_2 = sum(day); 
+metric_2 = sum(day_1); 
 
 fit_num = metric_1 + metric_2;
 

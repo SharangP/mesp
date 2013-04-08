@@ -2,8 +2,7 @@
 function [num] = adj_compare(sch)
 
 load class_adj.mat;
-sch = mod(sch,13);
-sch(sch==0) = 13;
+sch = ceil(sch/13); %hardcoded 13
 sch = sch';
 
 num_get = sum(sch == class_adj2);

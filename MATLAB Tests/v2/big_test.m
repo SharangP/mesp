@@ -1,4 +1,4 @@
-total_independent_runs = 100;
+total_independent_runs = 25;
 
 collection_best = cell(total_independent_runs,1);
 num_internal_runs =1000;
@@ -8,9 +8,12 @@ for ii = 1:total_independent_runs
     collection_best{ii} = one_run(num_internal_runs,std_array,population,...
         class_size,room_capacity);
     close all;
+    save('result4.mat','collection_best');
+    disp(ii)
 end
 
 %%
+collection_best = tot_test
 room_data
 initial_data
 base = cell(13,14,100); %hardcode

@@ -5,7 +5,7 @@ initial_data;
 sdt_vec = std_array;
 room_vec = 1:13;
 
-num_runs = 1000;
+num_runs = 10;
 avg = zeros(num_runs,1);
 gen_min = zeros(num_runs,1);
 
